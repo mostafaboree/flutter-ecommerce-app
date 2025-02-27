@@ -1,0 +1,123 @@
+name: weather_app
+description: "A Flutter app that displays real-time weather information using REST APIs."
+
+publish_to: 'none'
+
+version: 1.0.8+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  #A build system for Dart code generation and modular compilation
+  build_runner: ^2.4.7
+  # State management
+  flutter_bloc: ^8.1.3
+  # Code generator (mainly used with cubit & retrofit)
+  freezed: ^2.4.5
+  freezed_annotation: ^2.4.1
+  # for dependency injection
+  get_it: ^7.6.4
+  # Automatically generate code for converting to and from JSON by annotating Dart classes
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  # Networking
+  dio: ^5.3.3
+  retrofit: ^4.0.3
+  retrofit_generator: ^8.0.4
+  pretty_dio_logger: ^1.3.1
+  # localization
+  intl: ^0.19.0
+  easy_localization: ^3.0.3
+  # for splash screen
+  flutter_native_splash: ^2.3.5
+
+  #rating Bar
+  flutter_rating_bar: ^4.0.1
+  # An SVG rendering and widget library for Flutter, which allows painting 
+  flutter_svg: ^2.0.9
+  #lottie for animation
+  lottie: ^2.3.1
+  smooth_page_indicator: ^1.1.0 # For page indicators
+  # for adapting screen and font size.
+  flutter_screenutil: ^5.9.0
+  firebase_core: ^2.27.0
+  # Flutter library to load and cache network images.
+  cached_network_image: ^3.3.1
+  # reading and writing simple key-value pairs
+  shared_preferences: ^2.2.3
+  # provides API to store data in secure storage.
+  flutter_secure_storage: ^9.2.2
+  # easy way to add shimmer effect
+  shimmer: ^3.0.0
+  equatable: ^2.0.7
+  # For storing of key-value pairs on the device
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/lottie/
+
+    
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
