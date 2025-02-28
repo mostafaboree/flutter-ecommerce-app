@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:weather_app/data/api_constent.dart';
 import 'package:weather_app/data/modal/cart/cart.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/data/modal/user/Login_response.dart';
 import 'package:weather_app/data/modal/user/registration_response.dart';
 import 'package:weather_app/data/modal/user/user.dart';
@@ -19,7 +19,7 @@ abstract class ApiService {
   Future<List<ProductModel>> getProducts();
 
   @GET("/products/{id}")
-  Future<ProductModel> getProduct(@Path("id") int id);
+  Future<ProductModel> getProductById(@Path("id") int id);
 
 
 
@@ -41,13 +41,13 @@ abstract class ApiService {
   Future<Cart> getCartById(@Path("id") int id);
 
   //add cart
-  @POST("/cart")
+  @POST("/carts")
   Future<Cart> addCart(@Body() Cart cart);
   //delete cart
   @DELETE("/cart/{id}")
   Future<void> deleteCart(@Path("id") int id);
   //update cart
-  @PUT("/cart/{id}")
+  @PUT("/carts/{id}")
   Future<Cart> updateCart(@Path("id") int id,@Body() Cart cart);
 
 

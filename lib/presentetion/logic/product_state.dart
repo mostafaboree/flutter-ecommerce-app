@@ -1,5 +1,5 @@
 
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 
 
 sealed class ProductState {

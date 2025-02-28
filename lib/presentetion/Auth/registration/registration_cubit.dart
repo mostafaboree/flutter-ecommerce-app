@@ -11,19 +11,28 @@ class RegistrationCubit extends Cubit<RegistrationState> {
 
   RegistrationCubit(this.repository) : super(RegistrationInitial());
 
+  /// Registers a new user with the provided user data.
   Future<void> register(User userData) async {
     emit(RegistrationLoading());
-    try {
 
-      final response = await repository.register(userData.email, userData.username, userData.password,
-          userData.name.firstname, userData.name.lastname, userData.address.city, userData.phone);
-      if( response is SuccessResponse<User>){
+    try {
+      final response = await repository.register(
+        email: userData.email,
+        username: userData.username,
+        password: userData.password,
+        firstname: userData.name.firstname,
+        lastname: userData.name.lastname,
+        address: userData.address.city,
+        phone: userData.phone,
+      );
+
+      if (response is SuccessResponse<User>) {
         emit(RegistrationSuccess(response.data));
-      }else{
-        emit(RegistrationFailure( (response as ErrorResponse).message));
+      } else if (response is ErrorResponse) {
+        emit(RegistrationFailure((response as ErrorResponse).message));
       }
     } catch (e) {
-      emit(RegistrationFailure('An unexpected error occurred'));
+      emit(RegistrationFailure('An unexpected error occurred: ${e.toString()}'));
     }
   }
 }

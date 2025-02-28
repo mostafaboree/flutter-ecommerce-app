@@ -1,9 +1,11 @@
 
 
 import 'package:json_annotation/json_annotation.dart';
-import 'Geolocation.dart';
 
-part 'Address.g.dart';
+import 'geolocation.dart';
+
+
+part 'address.g.dart';
 
 @JsonSerializable()
 

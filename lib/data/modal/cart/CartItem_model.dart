@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/domin/enitity/cart_Item.dart';
 
 

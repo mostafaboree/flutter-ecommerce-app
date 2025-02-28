@@ -1,7 +1,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
-part 'Geolocation.g.dart';
 
+part 'geolocation.g.dart';
 @JsonSerializable()
 class Geolocation {
   @JsonKey(defaultValue: '0') // Handle null

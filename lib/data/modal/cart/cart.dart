@@ -22,7 +22,14 @@ class Cart{
     required this.date,
     required this.products,
   });
-
+  Cart copyWith({List<CartProduct>? products}) {
+    return Cart(
+      id: id,
+      userId: userId,
+      date: date,
+      products: products ?? this.products,
+    );
+  }
   factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
   Map<String, dynamic> toJson() => _$CartToJson(this);
 
