@@ -48,6 +48,11 @@ Introduction screens for first-time users.
  🎨  UI Components
 
 Flutter Material Design: A rich set of pre-built widgets and components for building beautiful, responsive, and consistent UIs.
+![onboarding1](https://github.com/user-attachments/assets/d14979ec-8810-4fe1-9544-ff42c47a4c4a)
+![onboarding2](https://github.com/user-attachments/assets/c8c4e383-649a-47d4-ab89-b10837e17f08)
+![onboarding3](https://github.com/user-attachments/assets/f5a26599-957f-47f9-82b3-b99723a6bac1)
+
+
 
 API
 FakeStoreAPI: A free and open-source API that provides mock data for products, users, and carts, used for testing and development.
