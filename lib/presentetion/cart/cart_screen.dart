@@ -100,7 +100,7 @@ class CartScreen extends StatelessWidget {
       ),
       onDismissed: (direction) {
         // Remove item from cart
-      //  context.read<CartCubit>().deleteCartItem(cartId);
+        //  context.read<CartCubit>().deleteCartItem(cartId);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('${cartProduct.product.title} removed from cart'),
@@ -158,13 +158,13 @@ class CartScreen extends StatelessWidget {
                           icon: Icon(Icons.remove, color: Colors.red),
                           onPressed: () {
                             // Decrease quantity
-                           /* context.read<CartCubit>().updateCartItem(
-                              cartId,
+                            context.read<CartCubit>().updateCartItem(
+
                               CartProduct(
                                 productId: cartProduct.product.id,
                                 quantity: cartProduct.quantity - 1,
                               ),
-                            );*/
+                            );
                           },
                         ),
                         Text(
@@ -177,14 +177,13 @@ class CartScreen extends StatelessWidget {
                         IconButton(
                           icon: Icon(Icons.add, color: Colors.green),
                           onPressed: () {
-                        /*    // Increase quantity
-                          context.read<CartCubit>().updateCartItem(
-                              cartId,
+                            // Increase quantity
+                            context.read<CartCubit>().updateCartItem(
                               CartProduct(
                                 productId: cartProduct.product.id,
                                 quantity: cartProduct.quantity + 1,
-                              ),*/
-
+                              ),
+                            );
                           },
                         ),
                       ],
