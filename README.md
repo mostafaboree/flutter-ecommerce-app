@@ -1,29 +1,30 @@
-# 📱 Flutter E-Commerce App 
+# 🚀 Flutter E-Commerce App 
+## 📖 Overview
 A fully functional Flutter e-commerce app with features like user authentication, product listing, cart management,
 onboarding screens, and splash screens. The app uses modern Flutter technologies like Dio for networking, 
-Retrofit for API abstraction, Cubit & Bloc for state management, and Git for version control.
+Retrofit is for API abstraction, Cubit & Bloc is for state management, and Git is for version control.
 
-## 💡 Features
-###  1.Authentication
-  User Login
-  User Registration
-### 2. Product Listing
-   *Fetch and display products from FakeStoreAPI.
-   *Product details screen.
+## 🎯 **Features**
+✅ Fetch and display product lists  
+✅ Enable user Search using name of product  
+✅ User authentication (Login/Register)  
+✅ Manage shopping cart  
+✅ API integration with Retrofit (Dio)  
+✅ State management (Provider/Bloc/Riverpod)  
+✅ Responsive UI with Jetpack Compose-style widgets  
 
-### 3.Cart Management
-  *Add/remove products to/from the cart.
-   *Update product quantity in the cart.
-    View cart total.
+## 📷 **Screenshots**
+ onboarding frist  |onBoarding Next  | Onboarding final |
+|-------------|--------------|---------------|
+| ![onboarding1](https://github.com/user-attachments/assets/3ff4e879-058f-47e5-9db2-faab6559c168) | ![onboarding2](https://github.com/user-attachments/assets/76d9ca6f-8b1a-4a40-ae67-027e797d0301) | ![onboarding3](https://github.com/user-attachments/assets/e4a8612e-f75e-40c2-ac23-bf73872b7a57) |
 
-### 4.Onboarding Screens
+---
+ Login   | Registration  |
+|-------------|--------------|
+| ![fa1](https://github.com/user-attachments/assets/a2238dac-5105-4d78-a529-923518ed55b1)  | ![fa2](https://github.com/user-attachments/assets/272bd203-3e40-4c18-8a2e-72533ecaa616) |
 
-Introduction screens for first-time users.
+--
 
-### 5.Splash Screen
-
-  App launch screen with a smooth transition to the main app
-#
 ## 🧑‍💻Technologies Used
 
 
@@ -46,11 +47,6 @@ Introduction screens for first-time users.
    GoRouter or AutoRout e: For declarative and type-safe navigation and routing within the app.
 
  🎨  UI Components
-
-Flutter Material Design: A rich set of pre-built widgets and components for building beautiful, responsive, and consistent UIs.
-![onboarding1](https://github.com/user-attachments/assets/d14979ec-8810-4fe1-9544-ff42c47a4c4a)
-![onboarding2](https://github.com/user-attachments/assets/c8c4e383-649a-47d4-ab89-b10837e17f08)
-![onboarding3](https://github.com/user-attachments/assets/f5a26599-957f-47f9-82b3-b99723a6bac1)
 
 
 
