@@ -1,5 +1,6 @@
-mport 'package:weather_app/data/modal/cart/cart_product.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/cart/cart_product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
+
 import '../../data/modal/cart/cart.dart';
 class CartEntity {
   final int id;
