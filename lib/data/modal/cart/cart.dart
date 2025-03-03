@@ -30,7 +30,6 @@ class Cart{
       products: products ?? this.products,
     );
   }
-
   factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
   Map<String, dynamic> toJson() => _$CartToJson(this);
 

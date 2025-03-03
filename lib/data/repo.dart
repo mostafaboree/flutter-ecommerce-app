@@ -1,13 +1,13 @@
 import 'package:weather_app/data/modal/cart/cart.dart';
 import 'package:weather_app/data/modal/cart/cart_product.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/data/modal/user/user_login.dart';
 import 'package:weather_app/data/remote/api_response.dart';
 import 'package:weather_app/data/remote/api_service.dart';
 import 'package:weather_app/presentetion/cart/cart_entity.dart';
 
-import 'modal/user/Address.dart';
-import 'modal/user/Geolocation.dart';
+import 'modal/user/address.dart';
+import 'modal/user/geolocation.dart';
 import 'modal/user/name.dart';
 import 'modal/user/user.dart';
 
@@ -16,6 +16,7 @@ class Repo {
   ApiService apiService;
 
   Repo(this.apiService);
+  // ****************************************** Product Features ********************************** //
 
 // Get all product function
   Future<ApiResponse<List<ProductModel>>> getAllProduct() async {
@@ -27,10 +28,10 @@ class Repo {
     }
   }
 
-// Get product by id function
-  Future<ApiResponse<ProductModel>> getProduct(int id) async {
+  /// Fetches a product by its ID
+   Future<ApiResponse<ProductModel>> getProduct(int id) async {
     try {
-      final response = await apiService.getProduct(id);
+      final response = await apiService.getProductById(id);
       return SuccessResponse(response);
     } catch (e) {
       return ErrorResponse(e.toString());
@@ -40,7 +41,7 @@ class Repo {
 
   //    ******************************************  user Auth feature ********************************** //
 
-  // User login function
+   /// Logs in a user with the provided email and password
   Future<ApiResponse<String>> login(String email, String password) async {
     try {
       final response = await apiService.login(
@@ -51,23 +52,34 @@ class Repo {
     }
   }
 
-  // User registration function
-  Future<ApiResponse<User>> register(String email, String username,
-      String password, String firstname, String lastname, String address,
-      String phone) async {
+
+  /// Registers a new user.
+  Future<ApiResponse<User>> register({
+    required String email,
+    required String username,
+    required String password,
+    required String firstname,
+    required String lastname,
+    required String address,
+    required String phone,
+  }) async {
     try {
-      final response = await apiService.register(User(
-        email: "Mostafa@gmail.com",
-        username: "mostafa",
-        password: "123456",
-        name: const Name(firstname: "mostafa", lastname: "sayed"),
-        address: const Address(city: 'gjhj',
-            street: 'gg',
-            zipcode: '41',
-            number: 54,
-            geolocation: Geolocation(lat: '23333333', long: '44443')),
-        phone: "01000000000",
-      ));
+      final user = User(
+        email: email,
+        username: username,
+        password: password,
+        name: Name(firstname: firstname, lastname: lastname),
+        address: Address(
+          city: address,
+          street: 'N/A', // Replace with actual data if available
+          zipcode: 'N/A',
+          number: 0,
+          geolocation: Geolocation(lat: '0', long: '0'),
+        ),
+        phone: phone,
+      );
+
+      final response = await apiService.register(user);
       return SuccessResponse(response);
     } catch (e) {
       print("Error: ${e.toString()}");
@@ -75,77 +87,26 @@ class Repo {
     }
   }
 
-  //    ******************************************  user cart feature ********************************** //
+  //    ******************************************   Cart Features ********************************** //
 
   // Get cart function
-  Future<ApiResponse<List<CartEntity>>> getCart() async {
+  Future<ApiResponse<CartEntity>> getCartById(int id) async {
     try {
-      // Fetch the cart
-      final cartResponse = await apiService.getCart();
-      print(" Cart Response  repo ${cartResponse}" );
-
-      // Fetch product details for each product in the cart
-      final cartsWithProducts = await Future.wait(
-        cartResponse.map((cart) async {
-
-          // Fetch product details for each product in the cart*****************************
-          final productsWithDetails = await Future.wait(
-            cart.products.map((cartProduct) async {
-              // Fetch the full product details using the productId
-              final product = await apiService.getProduct(cartProduct.productId);
-              // Return a new object combining cart product and product details
-
-              return  CartProductWithDetails(
-                quantity: cartProduct.quantity,
-                product: product,
-              );
-            }),
-          );
-
-          // Step 3: Create a new CartEntity with product details
-
-          return CartEntity(
-            id: cart.id,
-            userId: cart.userId,
-            date: cart.date,
-            product: productsWithDetails,
-
-          );
-        }),
-      );
-
-      return SuccessResponse(cartsWithProducts);
-    } catch (e) {
-      return ErrorResponse(e.toString());
-    }
-  }
-  
-  Future<ApiResponse<CartEntity>> getCartById( int id) async {
-
-    try {
-      final response = await apiService.getCartById(id);
-      final productsWithDetails = await Future.wait(
-        response.products.map((cartProduct) async {
-          final product = await apiService.getProduct(cartProduct.productId);
-          return CartProductWithDetails(
-            quantity: cartProduct.quantity,
-            product: product,
-          );
-        }),
-      );
-      return SuccessResponse(CartEntity(
-        id: response.id,
-        userId: response.userId,
-        date: response.date,
+      final cartResponse = await apiService.getCartById(id);
+      final productsWithDetails = await _fetchProductDetailsForCart(cartResponse.products);
+      final cartEntity = CartEntity(
+        id: cartResponse.id,
+        userId: cartResponse.userId,
+        date: cartResponse.date,
         product: productsWithDetails,
-      ));
+      );
+      return SuccessResponse(cartEntity);
     } catch (e) {
       return ErrorResponse(e.toString());
     }
   }
 
-
-  // Add cart function
+  /// Adds a new cart.
   Future<ApiResponse<Cart>> addCart(Cart cart) async {
     try {
       final response = await apiService.addCart(cart);
@@ -155,7 +116,7 @@ class Repo {
     }
   }
 
-  // Delete cart function
+  /// Deletes a cart by its ID.
   Future<ApiResponse<void>> deleteCart(int id) async {
     try {
       await apiService.deleteCart(id);
@@ -165,14 +126,53 @@ class Repo {
     }
   }
 
-  // Update cart function
-  Future<ApiResponse<Cart>> updateCart(int id, Cart cart) async {
+  /// Updates a cart by its ID. and  return update cart
+  Future<ApiResponse<CartEntity>> updateCart(int id, Cart cart) async {
     try {
-      final response = await apiService.updateCart(id, cart);
-      return SuccessResponse(response);
+      final cartResponse= await apiService.updateCart(id, cart);
+      final productsWithDetails = await _fetchProductDetailsForCart(cartResponse.products);
+      final cartEntity = CartEntity(
+        id: cartResponse.id,
+        userId: cartResponse.userId,
+        date: cartResponse.date,
+        product: productsWithDetails,
+      );
+      return SuccessResponse(cartEntity);
     } catch (e) {
       return ErrorResponse(e.toString());
     }
+  }
+
+  // ****************************************** Helper Methods ********************************** //
+
+  /// Fetches product details for a list of cart products.
+  Future<List<CartProductWithDetails>> _fetchProductDetailsForCart(
+      List<CartProduct> cartProducts,
+      ) async {
+    return await Future.wait(
+      cartProducts.map((cartProduct) async {
+        final product = await apiService.getProductById(cartProduct.productId);
+        return CartProductWithDetails(
+          quantity: cartProduct.quantity,
+          product: product,
+        );
+      }),
+    );
+  }
+
+  /// Enriches a list of carts with product details.
+  Future<List<CartEntity>> _enrichCartWithProductDetails(List<Cart> carts) async {
+    return await Future.wait(
+      carts.map((cart) async {
+        final productsWithDetails = await _fetchProductDetailsForCart(cart.products);
+        return CartEntity(
+          id: cart.id,
+          userId: cart.userId,
+          date: cart.date,
+          product: productsWithDetails,
+        );
+      }),
+    );
   }
 }
 
@@ -181,4 +181,3 @@ class Repo {
 
 
 
-// import 'package:weather_app/data/modal/cart/cart.dart';

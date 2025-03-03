@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Address.dart';
+part of 'address.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

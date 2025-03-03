@@ -4,8 +4,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/data/modal/user/name.dart';
 
-import 'Address.dart';
-import 'Geolocation.dart';
+import 'address.dart';
+import 'geolocation.dart';
 part 'user.g.dart';
 @JsonSerializable()
 class User {

@@ -11,7 +11,9 @@ import '../../data/modal/cart/cart.dart';
 
 class CartCubit extends Cubit<CartState> {
   final Repo _cartRepository;
+
   late Cart cart;
+
 
   CartCubit(this._cartRepository) : super(CartInitial());
 
@@ -76,14 +78,16 @@ Future<void> addCartItem(Cart cart) async {
 //update the cart's products
 
     final updatedProducts= cart.products.map((product){
-      if(newCart.productId==product.productId){
 
-        return CartProduct(
-            productId: product.productId,
-            quantity: newCart.quantity
-        );
-      }
-      return product;
+       if(newCart.productId==product.productId){
+
+       return CartProduct(
+           productId: product.productId,
+           quantity: newCart.quantity
+       );
+       }
+       return product;
+
 
     }).toList();
     //Update the cart object   by new Product
@@ -95,12 +99,20 @@ Future<void> addCartItem(Cart cart) async {
     final response = await _cartRepository.updateCart(5, cart);
 
     if (response is SuccessResponse<CartEntity>) {
-      emit(CartLoaded(response.data));
-    }
+
+        emit(CartLoaded(response.data));
+      }
+
+
+
 
     else {
       emit(CartError((response as ErrorResponse).message));
     }
+
+    }
+
   }
 
-}
+
+

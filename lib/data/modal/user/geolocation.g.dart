@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Geolocation.dart';
+part of 'geolocation.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

@@ -3,8 +3,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/data/modal/user/user.dart';
 
-import 'Address.dart';
-import 'Geolocation.dart';
+import 'address.dart';
+import 'geolocation.dart';
 import 'name.dart';
 
 part 'registration_response.g.dart';

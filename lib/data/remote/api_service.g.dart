@@ -59,7 +59,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ProductModel> getProduct(int id) async {
+  Future<ProductModel> getProductById(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -241,7 +241,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          '/cart',
+          '/carts',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -303,7 +303,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          '/cart/${id}',
+          '/carts/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

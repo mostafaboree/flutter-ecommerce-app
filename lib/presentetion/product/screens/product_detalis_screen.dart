@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../data/modal/product.dart';
+import '../../../data/modal/product/product.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../data/modal/product.dart';
+import '../../../data/modal/product/product.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final ProductModel product;

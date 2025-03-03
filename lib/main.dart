@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/data/remote/api_response.dart';
 import 'package:weather_app/domin/product_repository.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../core/sheradprefernc.dart';
+import '../../core/sheradprefernc.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/data/remote/api_response.dart';
 import 'package:weather_app/data/repo.dart';
 import 'package:weather_app/presentetion/logic/product_state.dart';

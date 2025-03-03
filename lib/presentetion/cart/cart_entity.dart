@@ -1,6 +1,6 @@
-
 import 'package:weather_app/data/modal/cart/cart_product.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
+
 import '../../data/modal/cart/cart.dart';
 class CartEntity {
   final int id;
@@ -34,15 +34,15 @@ class CartEntity {
 
 
 
-  class CartProductWithDetails {
+class CartProductWithDetails {
 
-    final int quantity;
-    final ProductModel product;
+  final int quantity;
+  final ProductModel product;
 
-    CartProductWithDetails({
-      required this.quantity,
-      required this.product,
-    });
+  CartProductWithDetails({
+    required this.quantity,
+    required this.product,
+  });
 
 
-  }
+}

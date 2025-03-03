@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/data/modal/product.dart';
+import 'package:weather_app/data/modal/product/product.dart';
 import 'package:weather_app/data/remote/api_service.dart';
 import 'package:weather_app/data/remote/dio_factory.dart';
 import 'package:weather_app/data/repo.dart';
@@ -9,9 +9,9 @@ import 'package:weather_app/presentetion/Auth/login/login_cubit.dart';
 import 'package:weather_app/presentetion/cart/cart_cubit,dart.dart';
 import 'package:weather_app/presentetion/cart/cart_screen.dart';
 import 'package:weather_app/presentetion/logic/cubit/product_cubit.dart';
-import 'package:weather_app/presentetion/onBoarding_screen.dart';
-import 'package:weather_app/presentetion/screens/home_screen.dart';
-import 'package:weather_app/presentetion/screens/product_detalis_screen.dart';
+import 'package:weather_app/presentetion/on_boarding_screen/onBoarding_screen.dart';
+import 'package:weather_app/presentetion/product/screens/home_screen.dart';
+import 'package:weather_app/presentetion/product/screens/product_detalis_screen.dart';
 
 import '../../presentetion/Auth/login/login_screen.dart';
 import '../../presentetion/Auth/registration/registration_cubit.dart';
