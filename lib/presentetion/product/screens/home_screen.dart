@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/core/app_router/app_router.dart';
 import 'package:weather_app/data/modal/product/product.dart';
+import 'package:weather_app/presentetion/product/screens/widget/special_offer_widget.dart';
 
 import '../../logic/cubit/product_cubit.dart';
 import '../../logic/product_state.dart';
@@ -46,7 +47,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           _buildSearchBar(context),
-          _buildSpecialOffer(),
+        const SpecialOfferWidget(),
           Expanded(
             child: BlocBuilder<ProductCubit, ProductState>(
               builder: (context, state) {
@@ -98,90 +99,7 @@ class HomeScreen extends StatelessWidget {
   }
 
 
-  /// Special Offer Widget for Home Screen
-  Widget _buildSpecialOffer() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      padding: const EdgeInsets.all(16),
-      height: 150,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        image: DecorationImage(
-          image: Image.asset('assets/images/sale.jpg').image,
 
-          fit: BoxFit.cover, // Cover the entire container
-          colorFilter: const ColorFilter.mode(Colors.transparent, // Add a dark overlay for better text visibility
-            BlendMode.darken,
-          ),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          // Icon or Illustration
-          const Icon(
-            Icons.local_offer,
-            size: 40,
-            color: Colors.white, // White icon for better contrast
-          ),
-          const SizedBox(width: 16),
-
-          // Text Content
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                '50% SPECIAL',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // White text for better contrast
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Limited time offer!',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white.withOpacity(0.8), // Slightly transparent white
-                ),
-              ),
-            ],
-          ),
-
-          const Spacer(),
-
-          // View All Button
-          TextButton(
-            onPressed: () {
-              // Navigate to special offers
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.white.withOpacity(0.9), // Semi-transparent white
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            child: Text(
-              'View All',
-              style: TextStyle(
-                color: Colors.orange[800], // Orange text for contrast
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // Special Offer Widget for Home Screen
 
